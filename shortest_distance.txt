@@ -1,0 +1,156 @@
+The path between Jenin and Ramallah using Dijkstra
+Jenin -> Tubas (30km) -> Jericho (52km) -> Ramallah (53km)
+
+The distance between Jenin and Ramallah using Dijkstra is 135
+
+
+The path between Jenin and Ramallah using BFS
+Jenin -> Tubas (30km) -> Jericho (52km) -> Ramallah (53km)
+
+The distance between Jenin and Ramallah using BFS is 135
+
+______________________________________________________________________________
+The path between Jenin and Nablus using Dijkstra
+Jenin -> Nablus (43km)
+
+The distance between Jenin and Nablus using Dijkstra is 43
+
+
+The path between Jenin and Nablus using BFS
+Jenin -> Nablus (43km)
+
+The distance between Jenin and Nablus using BFS is 43
+
+______________________________________________________________________________
+The path between Ramallah and Jenin using Dijkstra
+Ramallah -> Salfit (38km) -> Tulkarem (53km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Ramallah and Jenin using Dijkstra is 197
+
+
+The path between Ramallah and Jenin using BFS
+Ramallah -> Salfit (38km) -> Tulkarem (53km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Ramallah and Jenin using BFS is 197
+
+______________________________________________________________________________
+The path between Nablus and Jenin using Dijkstra
+Nablus -> Tulkarem (29km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Nablus and Jenin using Dijkstra is 135
+
+
+The path between Nablus and Jenin using BFS
+Nablus -> Tulkarem (29km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Nablus and Jenin using BFS is 135
+
+______________________________________________________________________________
+The path between 1 and 3 using Dijkstra
+1 -> 3 (2km)
+
+The distance between 1 and 3 using Dijkstra is 2km
+
+
+The path between 1 and 3 using BFS in the optimal way(the actual shortest path)
+1 -> 3 (2km)
+
+The distance between 1 and 3 using BFS in the optimal way(the actual shortest path) is 2km
+
+
+The path between 1 and 3 using BFS in the not optimal way
+1 -> 3 (2km)
+
+The distance between 1 and 3 using BFS  in the not optimal way 2km
+
+______________________________________________________________________________
+The path between Jenin and Ramallah using Dijkstra
+Jenin -> Tubas (30km) -> Jericho (52km) -> Ramallah (53km)
+
+The distance between Jenin and Ramallah using Dijkstra is 135km
+
+
+The path between Jenin and Ramallah using BFS in the optimal way(the actual shortest path)
+Jenin -> Tubas (30km) -> Jericho (52km) -> Ramallah (53km)
+
+The distance between Jenin and Ramallah using BFS in the optimal way(the actual shortest path) is 135km
+
+
+The path between Jenin and Ramallah using BFS in the not optimal way
+Jenin -> Tubas (30km) -> Jericho (52km) -> Ramallah (53km)
+
+The distance between Jenin and Ramallah using BFS  in the not optimal way 135km
+
+______________________________________________________________________________
+The path between Nablus and Jericho using Dijkstra
+Nablus -> Tubas (21km) -> Jericho (52km)
+
+The distance between Nablus and Jericho using Dijkstra is 73km
+
+
+The path between Nablus and Jericho using BFS in the optimal way(the actual shortest path)
+Nablus -> Tubas (21km) -> Jericho (52km)
+
+The distance between Nablus and Jericho using BFS in the optimal way(the actual shortest path) is 73km
+
+
+The path between Nablus and Jericho using BFS in the not optimal way
+Nablus -> Tubas (21km) -> Jericho (52km)
+
+The distance between Nablus and Jericho using BFS  in the not optimal way 73km
+
+______________________________________________________________________________
+The path between Nablus and Jenin using Dijkstra
+Nablus -> Tulkarem (29km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Nablus and Jenin using Dijkstra is 135km
+
+
+The path between Nablus and Jenin using BFS in the optimal way(the actual shortest path)
+Nablus -> Tulkarem (29km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Nablus and Jenin using BFS in the optimal way(the actual shortest path) is 135km
+
+
+The path between Nablus and Jenin using BFS in the not optimal way
+Nablus -> Tulkarem (29km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Nablus and Jenin using BFS  in the not optimal way 135km
+
+______________________________________________________________________________
+The path between Ramallah and Jenin using Dijkstra
+Ramallah -> Salfit (38km) -> Tulkarem (53km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Ramallah and Jenin using Dijkstra is 197km
+
+
+The path between Ramallah and Jenin using BFS in the optimal way(the actual shortest path)
+Ramallah -> Salfit (38km) -> Tulkarem (53km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Ramallah and Jenin using BFS in the optimal way(the actual shortest path) is 197km
+
+
+The path between Ramallah and Jenin using BFS in the not optimal way
+Ramallah -> Salfit (38km) -> Tulkarem (53km) -> Haifa (57km) -> Jenin (49km)
+
+The distance between Ramallah and Jenin using BFS  in the not optimal way 197km
+
+______________________________________________________________________________
+The path between Akka and Jericho using Dijkstra
+Akka -> Jenin (74km) -> Tubas (30km) -> Jericho (52km)
+
+The distance between Akka and Jericho using Dijkstra is 156km
+
+
+The path between Akka and Jericho using BFS in the optimal way(the actual shortest path)
+Akka -> Jenin (74km) -> Tubas (30km) -> Jericho (52km)
+
+The distance between Akka and Jericho using BFS in the optimal way(the actual shortest path) is 156km
+
+
+The path between Akka and Jericho using BFS in the not optimal way
+Akka -> Jenin (74km) -> Tubas (30km) -> Jericho (52km)
+
+The distance between Akka and Jericho using BFS  in the not optimal way 156km
+
+______________________________________________________________________________

@@ -1,0 +1,96 @@
+struct edge {
+    int weight;
+    char dest[100];
+};
+
+struct vertex {
+    char city[100];
+    int dist;
+    struct vertex* next;
+    struct edge** edges;
+    int edgeIdx;
+};
+
+struct Graph {
+    int v;
+    struct vertex** array;
+};
+
+struct vertex* createNode(char city[100]) {
+    struct vertex* newNode = (struct vertex*)malloc(sizeof(struct vertex));
+    strcpy(newNode->city, city);
+    newNode->edges = (struct edge**)malloc(100 * sizeof(struct edge*));
+    newNode->dist = 0;
+    newNode->edgeIdx = 0;
+    newNode->next = NULL;
+    return newNode;
+}
+
+struct Graph* createGraph(int V, char cities[V][100]) {
+    struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
+    graph->array = (struct vertex**)malloc(V * sizeof(struct vertex*));
+    graph->v = V;
+
+    for (int i = 0; i < V; i++) {
+        graph->array[i] = createNode(cities[i]);
+        graph->array[i]->next = NULL;
+    }
+
+
+    return graph;
+}
+
+void addEdge(struct Graph* graph, char src[100], char dest[100], int weight) {
+    int j = 0;
+    while (strcmp(graph->array[j]->city, dest) != 0) {
+        j++;
+    }
+
+    int i = 0;
+    struct vertex* temp = graph->array[i];
+
+    while (i < graph->v && strcmp(temp->city, src) != 0) {
+        i++;
+        temp = graph->array[i];
+    }
+
+    int edgeIdx = graph->array[i]->edgeIdx;
+
+    if (edgeIdx >= 100) {
+        printf("Maximum edge count exceeded.\n");
+        return;
+    }
+
+    graph->array[i]->edges[edgeIdx] = (struct edge*)malloc(sizeof(struct edge));
+    strcpy(graph->array[i]->edges[edgeIdx]->dest, dest);
+    graph->array[i]->edges[edgeIdx]->weight = weight;
+    ++graph->array[i]->edgeIdx;
+
+    if (temp == NULL) {
+        printf("Source vertex not found.\n");
+        return;
+    }
+
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    struct vertex* r = createNode(dest);
+    temp->next = r;
+
+}
+
+
+
+void printGraph(struct Graph* graph) {
+    struct vertex* temp;
+
+    for (int i = 0; i < graph->v; i++) {
+        temp = graph->array[i];
+        while (temp -> next != NULL) {
+            printf("%s -> ", temp->city);
+            temp = temp->next;
+        }
+        printf("%s", temp->city);
+        printf("\n");
+    }
+}

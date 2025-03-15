@@ -1,0 +1,105 @@
+struct QueueRecord {
+    int Capacity;
+    int Front;
+    int Rear;
+    int Size;
+    char **Array;
+};
+typedef struct QueueRecord *Queue;
+
+void MakeEmpty(Queue Q);
+int IsEmpty(Queue Q);
+int IsEmpty(Queue Q);
+Queue CreateQueue(int MaxElements);
+void MakeEmpty(Queue Q);
+void DisposeQueue(Queue Q);
+int Succ(int Value, Queue Q);
+void Enqueue(char *X, Queue Q);
+char *Front(Queue Q);
+void Dequeue(Queue Q);
+char *FrontAndDequeue(Queue Q);
+
+int IsEmpty(Queue Q) {
+    return Q->Size == 0;
+}
+
+int IsFull(Queue Q) {
+    return Q->Size == Q->Capacity;
+}
+
+Queue CreateQueue(int MaxElements) {
+    Queue q;
+    q = (Queue) malloc(sizeof(struct QueueRecord));
+    if (q == NULL) {
+        printf("Out of space\n");
+        return NULL;
+    }
+    q->Array = (char**) malloc(sizeof(char*) * MaxElements);
+    if (q->Array == NULL) {
+        printf("Out of space\n");
+        free(q);
+        return NULL;
+    }
+    q->Capacity = MaxElements;
+    MakeEmpty(q);
+    return q;
+}
+
+void MakeEmpty(Queue Q) {
+    Q->Size = 0;
+    Q->Front = 1;
+    Q->Rear = 0;
+}
+
+void DisposeQueue(Queue Q) {
+    if (Q != NULL) {
+        free(Q->Array);
+        free(Q);
+    }
+}
+
+int Succ(int Value, Queue Q) {
+    if (++Value == Q->Capacity)
+        Value = 0;
+    return Value;
+}
+
+void Enqueue(char *X, Queue Q) {
+    if (IsFull(Q))
+        printf("Full Queue\n");
+    else {
+        Q->Size++;
+        Q->Rear = Succ(Q->Rear, Q);
+        Q->Array[Q->Rear] = strdup(X);
+    }
+}
+
+char *Front(Queue Q) {
+    if (!IsEmpty(Q)) {
+        return Q->Array[Q->Front];
+    }
+    printf("Empty Queue!\n");
+    return NULL;
+}
+
+void Dequeue(Queue Q) {
+    if (IsEmpty(Q))
+        printf("Empty Queue!\n");
+    else {
+        free(Q->Array[Q->Front]);
+        Q->Size--;
+        Q->Front = Succ(Q->Front, Q);
+    }
+}
+
+char *FrontAndDequeue(Queue Q) {
+    char *X = NULL;
+    if (IsEmpty(Q)) {
+        printf("Empty Queue!\n");
+    } else {
+        X = Q->Array[Q->Front];
+        Q->Size--;
+        Q->Front = Succ(Q->Front, Q);
+    }
+    return X;
+}

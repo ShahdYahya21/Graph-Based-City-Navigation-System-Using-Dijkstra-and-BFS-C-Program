@@ -1,0 +1,113 @@
+struct MinHeapNode {
+  int dist;
+  char city[100];
+};
+
+struct MinHeap {
+  int size;
+  int capacity;
+  struct MinHeapNode **array;
+};
+
+void minHeapify(struct MinHeap *minHeap, int idx);
+struct MinHeapNode *newMinHeapNode(int dist, char city[100]);
+struct MinHeap *createMinHeap(int capacity);
+void swapMinHeapNode(struct MinHeapNode **a, struct MinHeapNode **b);
+int isEmpty(struct MinHeap *minHeap);
+struct MinHeapNode *extractMin(struct MinHeap *minHeap);
+void updateHeap(struct MinHeap *minHeap, char city[100], int dist);
+void insert(struct MinHeap *minHeap, int dist, char city[100]);
+
+void minHeapify(struct MinHeap *minHeap, int idx) {
+  int smallest, left, right;
+  smallest = idx;
+  left = 2 * idx + 1;
+  right = 2 * idx + 2;
+
+  if (left < minHeap->size && minHeap->array[left]->dist < minHeap->array[smallest]->dist)
+    smallest = left;
+
+  if (right < minHeap->size && minHeap->array[right]->dist < minHeap->array[smallest]->dist)
+    smallest = right;
+
+  if (smallest != idx) {
+    struct MinHeapNode *smallestNode = minHeap->array[smallest];
+    struct MinHeapNode *idxNode = minHeap->array[idx];
+
+    swapMinHeapNode(&minHeap->array[smallest], &minHeap->array[idx]);
+
+    minHeapify(minHeap, smallest);
+  }
+}
+
+struct MinHeapNode *newMinHeapNode(int dist, char city[100]) {
+  struct MinHeapNode *minHeapNode = (struct MinHeapNode *)malloc(sizeof(struct MinHeapNode));
+  minHeapNode->dist = dist;
+  strcpy(minHeapNode->city, city);
+  return minHeapNode;
+}
+
+struct MinHeap *createMinHeap(int capacity) {
+  struct MinHeap *minHeap = (struct MinHeap *)malloc(sizeof(struct MinHeap));
+  minHeap->size = 0;
+  minHeap->capacity = capacity;
+  minHeap->array = (struct MinHeapNode **)malloc(capacity * sizeof(struct MinHeapNode *));
+  return minHeap;
+}
+
+void swapMinHeapNode(struct MinHeapNode **a, struct MinHeapNode **b) {
+  struct MinHeapNode *t = *a;
+  *a = *b;
+  *b = t;
+}
+
+int isEmpty(struct MinHeap *minHeap) {
+  return minHeap->size == 0;
+}
+
+struct MinHeapNode *extractMin(struct MinHeap *minHeap) {
+  if (isEmpty(minHeap))
+    return NULL;
+
+  struct MinHeapNode *root = minHeap->array[0];
+
+  struct MinHeapNode *lastNode = minHeap->array[minHeap->size - 1];
+  minHeap->array[0] = lastNode;
+
+  --minHeap->size;
+  minHeapify(minHeap, 0);
+
+  return root;
+}
+
+void updateHeap(struct MinHeap *minHeap, char city[100], int dist) {
+  int i = 0;
+  while (i < minHeap->size && strcmp(minHeap->array[i]->city, city) != 0) {
+    i++;
+  }
+
+  if (i == minHeap->size) {
+    return;
+  }
+
+  minHeap->array[i]->dist = dist;
+
+  while (i && minHeap->array[i]->dist < minHeap->array[(i - 1) / 2]->dist) {
+    swapMinHeapNode(&minHeap->array[i], &minHeap->array[(i - 1) / 2]);
+    i = (i - 1) / 2;
+  }
+  if(i == 0) minHeapify(minHeap, 0);
+
+}
+
+void insert(struct MinHeap *minHeap, int dist, char city[100]) {
+  if (minHeap->size == minHeap->capacity) {
+    printf("Overflow: Could not insert more elements\n");
+    return;
+  }
+
+  struct MinHeapNode *minHeapNode = newMinHeapNode(dist, city);
+  minHeap->array[minHeap->size] = minHeapNode;
+  minHeap->size++;
+  updateHeap(minHeap, city, dist);
+}
